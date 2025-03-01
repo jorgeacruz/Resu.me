@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Image, StatusBar, TextInput, ImageBackground } from 'react-native';
 import { styles } from './styles';
-import { router } from 'expo-router';
+import { router, Link } from 'expo-router';
 import AppLoading from 'expo-app-loading';
 
 import {
@@ -23,14 +23,16 @@ export default function  Login() {
   }
 
  return (
-   <View >
-    <ImageBackground source={require('../../assets/images/Job1.png')} style={{width: '100%', height: '100%'}}>
+   <View style={{backgroundColor:'#0000'}}>
+    <ImageBackground source={require('../../assets/images/Job2.png')} style={{width: '100%', height: '100%'}}>
     <View style={styles.logo}>
+      <Link href={'/'} >
         <Image source={require('../../assets/images/logo.png')} style={{width:300, height:60 }} />
+      </Link>
     </View>
     <View style={styles.Slogan}>
-        <Text style={styles.textBold}>O mercado de trabalho te espera</Text>
-        <Text style={styles.textLight}>Cadastre suas habilidades proficionais</Text>
+        <Text style={styles.textBold}>O mercado de trabalho precisa te conhecer</Text>
+        <Text style={styles.textLight}>Divulgue seu CV aos recrutadores</Text>
     </View>
 
     <View style={styles.form}>
@@ -41,7 +43,7 @@ export default function  Login() {
           <Text style={styles.text}>Logar</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={() => router.replace('/login')} >
+      <TouchableOpacity onPress={() => router.replace('/')} >
         <Text style={{color:'#fff', paddingTop:20, textAlign:'center'}}>Esqueci minha senha</Text>
       </TouchableOpacity>
     </ImageBackground>

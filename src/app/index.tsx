@@ -22,6 +22,11 @@ export default function  Index() {
     return <AppLoading />;
   }
 
+  function handleLogin() {
+    alert('Cadastrado com sucesso');
+    router.replace('/login');
+  }
+
  return (
    <View >
     <ImageBackground source={require('../../assets/images/Job1.png')} style={{width: '100%', height: '100%'}}>
@@ -37,7 +42,7 @@ export default function  Index() {
         <TextInput style={styles.input} placeholder="Digite seu nome" placeholderTextColor={'#FFBB00'} />
         <TextInput style={styles.input} placeholder="Digite seu email" placeholderTextColor={'#FFBB00'} autoCapitalize='none'/>
         <TextInput style={styles.input} placeholder="Digite sua senha" placeholderTextColor={'#FFBB00'} secureTextEntry={true}/>
-        <TouchableOpacity style={styles.cta} onPress={() => router.push('perfil')}>
+        <TouchableOpacity style={styles.cta} onPress={handleLogin}>
           <Text style={styles.text}>Cadastrar</Text>
         </TouchableOpacity>
       </View>
