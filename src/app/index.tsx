@@ -24,14 +24,14 @@ export default function  Index() {
 
   function handleLogin() {
     alert('Cadastrado com sucesso');
-    router.replace('/login');
+    router.replace('/(stack)/login');
   }
 
  return (
    <View >
-    <ImageBackground source={require('../../assets/images/Job1.png')} style={{width: '100%', height: '100%'}}>
+    <ImageBackground source={require('./images/Job1.png')} style={{width: '100%', height: '100%'}}>
     <View style={styles.logo}>
-        <Image source={require('../../assets/images/logo.png')} style={{width:300, height:60 }} />
+        <Image source={require('./images/logo.png')} style={{width:300, height:60 }} />
     </View>
     <View style={styles.Slogan}>
         <Text style={styles.textBold}>O mercado de trabalho te espera</Text>
