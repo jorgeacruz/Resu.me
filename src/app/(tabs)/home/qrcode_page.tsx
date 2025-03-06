@@ -1,8 +1,9 @@
 import { View, Text } from 'react-native';
+import {styles} from '../styles';
 
 export default function QrCode() {
  return (
-   <View>
+   <View style={styles.container}>
     <Text>QR Code</Text>
    </View>
   );
