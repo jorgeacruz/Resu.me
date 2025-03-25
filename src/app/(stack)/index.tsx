@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, StatusBar, TextInput, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StatusBar, TextInput, ImageBackground, ScrollView } from 'react-native';
 import { styles } from '../styles';
 import { router } from 'expo-router';
 import AppLoading from 'expo-app-loading';
@@ -13,9 +13,9 @@ import {
 
 export default function  Index() {
 
-  const [name, setName] = useState()
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   let [fontsLoaded] = useFonts({
     OpenSans_300Light,
@@ -27,14 +27,19 @@ export default function  Index() {
     return <AppLoading />;
   }
 
-  function handleLogin() {
+  function handleSignup() {
     alert('Cadastrado com sucesso');
-    router.push('/(tabs)/home');
+    console.log(
+      name,
+      email,
+      password
+    )
+   // router.push('/(tabs)/home');
   }
 
  return (
-   <View >
-    <ImageBackground source={require('@/app/images/Job1.png')} style={{width: '100%', height: '100%'}}>
+   <View style={{flex:1}}>
+    <ImageBackground source={require('@/app/images/Job1.png')} style={{width: '100%', height: '100%'}} resizeMode='cover'>
     <View style={styles.logo}>
         <Image source={require('@/app/images/logo.png')} style={{width:300, height:60 }} />
     </View>
@@ -49,12 +54,14 @@ export default function  Index() {
           style={styles.input} 
           placeholder="Digite seu nome" 
           placeholderTextColor={'#FFBB00'}
+          onChangeText={setName}
         />
         <TextInput
           value={email} 
           style={styles.input} 
           placeholder="Digite seu email" 
-          placeholderTextColor={'#FFBB00'} 
+          placeholderTextColor={'#FFBB00'}
+          onChangeText={setEmail} 
           autoCapitalize='none'
         />
         <TextInput
@@ -62,9 +69,10 @@ export default function  Index() {
           style={styles.input} 
           placeholder="Digite sua senha" 
           placeholderTextColor={'#FFBB00'} 
+          onChangeText={setPassword}
           secureTextEntry={true}
         />
-        <TouchableOpacity style={styles.cta} onPress={handleLogin}>
+        <TouchableOpacity style={styles.cta} onPress={handleSignup}>
           <Text style={styles.text}>Cadastrar</Text>
         </TouchableOpacity>
       </View>
@@ -75,5 +83,6 @@ export default function  Index() {
 
     <StatusBar barStyle="light-content" hidden={true} />
    </View>
+  
   );
 }  

@@ -1,4 +1,5 @@
-import { View, Text, TouchableOpacity, Image, StatusBar, TextInput, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image, StatusBar, TextInput, ImageBackground, Alert } from 'react-native';
 import { styles } from '../styles'
 import { router, Link} from 'expo-router';
 import AppLoading from 'expo-app-loading';
@@ -13,6 +14,9 @@ import {
 
 export default function  Login() {
 
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
   let [fontsLoaded] = useFonts({
     OpenSans_300Light,
     OpenSans_400Regular,
@@ -23,8 +27,11 @@ export default function  Login() {
     return <AppLoading />;
   }
 
-  function handleLogin() {
-    router.replace('/(tabs)/home')
+  function handleSignin() {
+    if(email === '' || password === ''){
+      Alert.alert('Campos vazios')
+    }
+    //router.replace('/(tabs)/home')
   }
  
 
@@ -41,10 +48,25 @@ export default function  Login() {
 
     <View style={styles.form}>
         
-        <TextInput style={styles.input} placeholder="Digite seu email" placeholderTextColor={'#FFBB00'} autoCapitalize='none'/>
-        <TextInput style={styles.input} placeholder="Digite sua senha" placeholderTextColor={'#FFBB00'} secureTextEntry={true}/>
-        <TouchableOpacity style={styles.cta} onPress={handleLogin} >
-          <Text style={styles.text}>Logar</Text>
+        <TextInput 
+          value={email}
+          style={styles.input} 
+          placeholder="Digite seu email" 
+          placeholderTextColor={'#FFBB00'}
+          onChangeText={setEmail} 
+          autoCapitalize='none'
+        />
+        <TextInput
+          value={email} 
+          style={styles.input} 
+          placeholder="Digite sua senha" 
+          placeholderTextColor={'#FFBB00'}
+          onChangeText={setPassword} 
+          secureTextEntry={true}
+        />
+        <TouchableOpacity style={styles.cta} onPress={handleSignin} >
+          <Text 
+          style={styles.text}>Logar</Text>
         </TouchableOpacity>
       </View>
       <TouchableOpacity onPress={() => router.replace('/')} >

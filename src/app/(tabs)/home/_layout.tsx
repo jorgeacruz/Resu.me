@@ -8,7 +8,7 @@ export default function Layout() {
         tabBarActiveTintColor:'#fb0',
         tabBarInactiveTintColor:'#fff',
         tabBarStyle:{
-          backgroundColor:'#000'
+          backgroundColor:'#252525'
         }
       }}
     >
@@ -21,15 +21,15 @@ export default function Layout() {
       />
       <Tabs.Screen name="qrcode_page" 
         options={{
-          headerShown:false, 
+          headerShown:true, 
           title:'QR',
           tabBarIcon:({color, size}) => (<Icon name='qrcode' size={size} color={color}/>),
         }} 
       />
       <Tabs.Screen name="perfil" 
       options={{
-        headerShown:false, 
-        title:'Perfil',
+        headerShown:true, 
+        title:'Seu perfil',
         tabBarIcon:({color, size}) => (<Icon name='user' size={size} color={color}/>),
         }} 
       />
