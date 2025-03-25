@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, StatusBar, TextInput, ImageBackground, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StatusBar, TextInput, ImageBackground, Alert } from 'react-native';
 import { styles } from '../styles';
 import { router } from 'expo-router';
 import AppLoading from 'expo-app-loading';
+import { supabase } from '@/libs/supabase';
 
 import {
   useFonts,
@@ -27,14 +28,19 @@ export default function  Index() {
     return <AppLoading />;
   }
 
-  function handleSignup() {
-    alert('Cadastrado com sucesso');
-    console.log(
-      name,
-      email,
-      password
-    )
-   // router.push('/(tabs)/home');
+  async function handleSignup() {
+
+    //record email / password
+    const { data, error} = await supabase.auth.signUp({
+      email:email,
+      password:password,
+    })
+    if(error) {
+      Alert.alert(error.message);
+      return;
+    }
+    // replace to home
+    router.push('/(stack)/login');
   }
 
  return (

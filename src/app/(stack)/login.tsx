@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image, StatusBar, TextInput, ImageBackgro
 import { styles } from '../styles'
 import { router, Link} from 'expo-router';
 import AppLoading from 'expo-app-loading';
-
+import { supabase } from '@/libs/supabase';
 
 import {
   useFonts,
@@ -27,11 +27,18 @@ export default function  Login() {
     return <AppLoading />;
   }
 
-  function handleSignin() {
-    if(email === '' || password === ''){
-      Alert.alert('Campos vazios')
+  async function handleSignin() {
+    
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email:email,
+      password:password
+    })
+
+    if(error) {
+      Alert.alert('Erro ao logar');
+      return;
     }
-    //router.replace('/(tabs)/home')
+    router.replace('/(tabs)/home')
   }
  
 
@@ -57,7 +64,7 @@ export default function  Login() {
           autoCapitalize='none'
         />
         <TextInput
-          value={email} 
+          value={password} 
           style={styles.input} 
           placeholder="Digite sua senha" 
           placeholderTextColor={'#FFBB00'}
