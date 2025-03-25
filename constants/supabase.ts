@@ -1,0 +1,2 @@
+export const supaUrl = 'https://wedcuuyiteplemmautns.supabase.co';
+export const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlZGN1dXlpdGVwbGVtbWF1dG5zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI4NjMzNzMsImV4cCI6MjA1ODQzOTM3M30.I1xIcL0FOqYkYggnBTvcoHs5EE1AMp9Km1QNcNKbBQA';
