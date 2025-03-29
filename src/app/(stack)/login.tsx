@@ -4,7 +4,7 @@ import { styles } from '../styles'
 import { router, Link} from 'expo-router';
 import AppLoading from 'expo-app-loading';
 import { supabase } from '@/libs/supabase';
-
+// import fonts
 import {
   useFonts,
   OpenSans_300Light,
@@ -16,7 +16,7 @@ export default function  Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
+// load fonts
   let [fontsLoaded] = useFonts({
     OpenSans_300Light,
     OpenSans_400Regular,
@@ -26,7 +26,7 @@ export default function  Login() {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-
+// signin on database
   async function handleSignin() {
     
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -45,12 +45,12 @@ export default function  Login() {
  return (
    <View style={{backgroundColor:'#0000'}}>
     <ImageBackground source={require('../images/Job2.png')} style={{width: '100%', height: '100%'}}>
-    <View style={styles.logo}>
-        <Image source={require('../images/logo.png')} style={{width:300, height:60 }} />
+    <View style={styles.ViewLogo}>
+        <Image source={require('../images/logo.png')} style={styles.logo} />
     </View>
     <View style={styles.Slogan}>
-        <Text style={styles.textBold}>O mercado de trabalho precisa te conhecer</Text>
-        <Text style={styles.textLight}>Divulgue seu CV aos recrutadores</Text>
+        <Text style={styles.textBold}>O mercado de trabalho precisa te conhecer.</Text>
+        <Text style={styles.textLight}>Divulgue seu trabalhos aos recrutadores.</Text>
     </View>
 
     <View style={styles.form}>

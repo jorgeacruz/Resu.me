@@ -1,4 +1,4 @@
-import { Button, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
@@ -22,11 +22,14 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10,
   },
-  
+  ViewLogo:{
+    justifyContent:'center',
+    alignItems:'center',
+    paddingTop:50,
+  },
   logo:{
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 70
+    width:200,
+    height:30
   },
   Slogan:{
     width: '100%',

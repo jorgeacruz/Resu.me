@@ -34,11 +34,18 @@ export default function  Index() {
     const { data, error} = await supabase.auth.signUp({
       email:email,
       password:password,
+        options:{
+          data:{
+            name:name
+          }
+        }
     })
+
     if(error) {
       Alert.alert(error.message);
       return;
     }
+    
     // replace to home
     router.push('/(stack)/login');
   }
@@ -46,12 +53,12 @@ export default function  Index() {
  return (
    <View style={{flex:1}}>
     <ImageBackground source={require('@/app/images/Job1.png')} style={{width: '100%', height: '100%'}} resizeMode='cover'>
-    <View style={styles.logo}>
-        <Image source={require('@/app/images/logo.png')} style={{width:300, height:60 }} />
+    <View style={styles.ViewLogo}>
+        <Image source={require('@/app/images/logo.png')} style={styles.logo} />
     </View>
     <View style={styles.Slogan}>
-        <Text style={styles.textBold}>O mercado de trabalho te espera</Text>
-        <Text style={styles.textLight}>Cadastre suas habilidades proficionais</Text>
+        <Text style={styles.textBold}>O mercado de trabalho te espera.</Text>
+        <Text style={styles.textLight}>Cadastre suas habilidades profissionais.</Text>
     </View>
 
     <View style={styles.form}>

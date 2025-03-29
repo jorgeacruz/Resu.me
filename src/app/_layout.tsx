@@ -19,7 +19,11 @@ export default function Layout() {
            
         }}
       />
-      <Stack.Screen name="(stack)/login" options={{ headerShown:false}}/>
+      <Stack.Screen name="(stack)/login" 
+        options={{ 
+          headerShown:true,
+          title:'Acesse sua conta'
+        }}/>
       <Stack.Screen name="(stack)/lostPass" options={{ headerShown:false}}/>
    </Stack>
   );
