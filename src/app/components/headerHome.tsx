@@ -1,8 +1,15 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome'
+import { router } from 'expo-router';
+import { supabase } from '@/libs/supabase';
 
 export default function HeaderHome() {
- 
+
+    async function handleLogout() {
+      const Logout = await supabase.auth.signOut()
+      router.replace('/')
+    }
+
     return (
    <View style={styles.body}>
       <FontAwesome name="user" size={24} color="#fff" />
@@ -10,7 +17,7 @@ export default function HeaderHome() {
          <Text style={styles.Title}>Jorge Cruz</Text>   
          <Text style={styles.SubTitle}>Front-End Engineer</Text>   
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleLogout}>
          <FontAwesome name="lightbulb-o" size={24} color="#fff" />
       </TouchableOpacity>
    </View>

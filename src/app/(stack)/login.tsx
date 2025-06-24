@@ -76,7 +76,7 @@ export default function  Login() {
           style={styles.text}>Logar</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={() => router.replace('/')} >
+      <TouchableOpacity onPress={() => router.replace('/(stack)/lostPassword')} >
         <Text style={{color:'#fff', paddingTop:20, textAlign:'center'}}>Esqueci minha senha</Text>
       </TouchableOpacity>
       

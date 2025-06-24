@@ -18,7 +18,7 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [about, setAbout] = useState("");
-  const [objective, setObjective] = useState("");
+  const [objectives, setObjectives] = useState("");
   
   const [education, setEducation] = useState([{ institution: "", year: "", degree: "" }]);
   const [softwareSkills, setSoftwareSkills] = useState([""]);
@@ -42,7 +42,7 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
   const handleSubmit = async () => {
     try {
       const { error: personalError } = await supabaseClient.from("personal_data").insert([
-        { user_id: userId, full_name: fullName, phone, email, about, objective }
+        { user_id: userId, full_name: fullName, phone, email, about, objectives }
       ]);
 
       if (personalError) throw personalError;
@@ -54,10 +54,16 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
       for (const skill of softwareSkills) {
         await supabaseClient.from("software_skills").insert([{ user_id: userId, item: skill }]);
       }
-
-      Alert.alert("Sucesso", "Dados cadastrados com sucesso!");
+        Alert.alert("Sucesso", "Dados cadastrados com sucesso!");
+        setFullName("");
+        setPhone("");
+        setEmail("");
+        setAbout("");
+        setObjectives("");
+        return;
     } catch (error) {
       Alert.alert("Erro", error instanceof Error ? error.message : "Ocorreu um erro desconhecido.");
+      console.log(error)
     }
   };
 
@@ -73,8 +79,6 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
         value={fullName} 
         onChangeText={setFullName} 
         style={styles.input}
-        placeholder="Digite seu nome completo"
-        placeholderTextColor='#333' 
       />
 
       <Text style={styles.singleTitle}>Telefone:</Text>
@@ -89,16 +93,15 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
             .slice(0, 15); // Limit to the maximum length of the mask
           setPhone(maskedText);
         }}
-        placeholder="(xx) xxxxx-xxxx"
         keyboardType="phone-pad"
       />
 
       <Text style={styles.singleTitle}>Email:</Text>
       <TextInput 
         value={email} 
-        style={styles.input} 
-        placeholder="Digite seu email"
-        placeholderTextColor="#333"
+        onChangeText={setEmail}
+        style={styles.input}
+        autoCapitalize='none' 
       />
 
       <Text style={styles.singleTitle}>Sobre:</Text>
@@ -111,8 +114,8 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
 
       <Text>Objetivo:</Text>
       <TextInput 
-        value={objective} 
-        onChangeText={setObjective} 
+        value={objectives} 
+        onChangeText={setObjectives} 
         style={styles.input} 
         multiline
       />
@@ -216,7 +219,7 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
           setPhone("");
           setEmail("");
           setAbout("");
-          setObjective("");
+          setObjectives("");
           setEducation([{ institution: "", year: "", degree: "" }]);
           setSoftwareSkills([""]);
         }}
