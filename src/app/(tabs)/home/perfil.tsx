@@ -16,7 +16,7 @@ export default function PersonalDataView() {
       const { data, error } = await supabaseClient
         .from('personal_data')
         .select('full_name, about, objectives')
-        .eq('email', 'j.alexcruz@gmail.com')
+        .eq('email', 'fclaudiacruz@gmail.com')
         .single();
 
       if (!error) setData(data);

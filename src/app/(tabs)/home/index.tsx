@@ -5,10 +5,6 @@ import { supabase as supabaseClient } from '@/libs/supabase';
 import HeaderHome from "@/app/components/headerHome";
 import { styles } from "./styles";
 
-//const supabaseUrl = "https://YOUR_SUPABASE_URL.supabase.co";
-//const supabaseAnonKey = "YOUR_SUPABASE_ANON_KEY";
-//const supabase = createClient(supabaseUrl, supabaseAnonKey);
-
 interface PersonalDataScreenProps {
   userId: string;
 }
@@ -60,6 +56,10 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
         setEmail("");
         setAbout("");
         setObjectives("");
+        setEducation([{ institution: "", year: "", degree: "" }]);
+        setSoftwareSkills([""]);
+        // Redirecionar ou atualizar a tela, se necessário  
+        
         return;
     } catch (error) {
       Alert.alert("Erro", error instanceof Error ? error.message : "Ocorreu um erro desconhecido.");

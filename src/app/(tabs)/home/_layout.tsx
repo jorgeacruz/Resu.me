@@ -14,6 +14,9 @@ export default function Layout() {
     >
       <Tabs.Screen name="index" 
         options={{
+          headerStyle:{
+            backgroundColor:'#252525',
+          },
           headerShown:false, 
           title:'Home',
           tabBarIcon:({color, size}) => (<Icon name='home' size={size} color={color}/>),
@@ -28,7 +31,11 @@ export default function Layout() {
       />
       <Tabs.Screen name="perfil" 
       options={{
-        headerShown:true, 
+        headerStyle:{
+          backgroundColor:'#252525',
+        },
+        headerShown:true,
+        headerTintColor:'#fff', 
         title:'Seu perfil',
         tabBarIcon:({color, size}) => (<Icon name='user' size={size} color={color}/>),
         }} 
