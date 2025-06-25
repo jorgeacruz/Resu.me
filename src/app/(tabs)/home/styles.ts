@@ -13,6 +13,14 @@ export const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 10,
         borderRadius: 5,
+        textAlign:'justify'
+      },
+
+      counter: {
+        textAlign: 'right',
+        marginTop: 4,
+        fontSize: 12,
+        color: '#666',
       },
       
       recordButton:{
@@ -45,21 +53,21 @@ export const styles = StyleSheet.create({
         gap:5
       },
       addButton:{
-        width:190,
+        width:180,
         justifyContent:'center',
         alignItems:'center',
         backgroundColor:'#fb0',
         padding:10,
-        borderRadius:5,
+        borderRadius:4,
         marginVertical:10
       },
       removeButton: {
-        width:190,
+        width:165,
         justifyContent:'center',
         alignItems:'center',
         backgroundColor: "#ff4d4d",
         padding: 10,
-        borderRadius: 5,
+        borderRadius: 4,
         marginVertical: 10,
       },
 });

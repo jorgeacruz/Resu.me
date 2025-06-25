@@ -67,10 +67,13 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
     }
   };
 
+  // Limite de caracteres para o campo
+  const maxLength = 250;
+
   return (
     <View style={styles.container}>
       
-    <ScrollView showsVerticalScrollIndicator={false} style={{flex:1}}>
+    <ScrollView showsVerticalScrollIndicator={false} style={{flex:1, width:'100%'}}>
       <HeaderHome/>
       <View style={{padding:20}}>
 
@@ -79,6 +82,7 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
         value={fullName} 
         onChangeText={setFullName} 
         style={styles.input}
+        autoCapitalize='words'
       />
 
       <Text style={styles.singleTitle}>Telefone:</Text>
@@ -110,15 +114,20 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
         onChangeText={setAbout} 
         style={styles.input} 
         multiline
-      />
+        numberOfLines={4}
+        maxLength={maxLength}
 
+      />
+      <Text style={styles.counter}>{about.length}/{maxLength}</Text>
       <Text>Objetivo:</Text>
       <TextInput 
         value={objectives} 
         onChangeText={setObjectives} 
         style={styles.input} 
         multiline
+        maxLength={maxLength}
       />
+      <Text style={styles.counter}>{objectives.length}/{maxLength}</Text>
 
       <Text style={styles.singleTitle}>Formação:</Text>
       {education.map((edu, index) => (

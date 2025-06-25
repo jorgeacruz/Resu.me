@@ -71,7 +71,7 @@ export default function  Login() {
           onChangeText={setPassword} 
           secureTextEntry={true}
         />
-        <TouchableOpacity style={styles.cta} onPress={handleSignin} >
+        <TouchableOpacity style={styles.cta} onPress={() => router.replace('/(tabs)/home')} >
           <Text 
           style={styles.text}>Logar</Text>
         </TouchableOpacity>

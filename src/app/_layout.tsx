@@ -24,7 +24,11 @@ export default function Layout() {
           headerShown:true,
           title:'Acesse agora sua conta'
         }}/>
-      <Stack.Screen name="(stack)/lostPass" options={{ headerShown:false}}/>
+      <Stack.Screen name="(stack)/lostPassword" 
+        options={{ 
+          headerShown:true,
+          title:'Recuparar Senha'
+        }}/>
    </Stack>
   );
 }
