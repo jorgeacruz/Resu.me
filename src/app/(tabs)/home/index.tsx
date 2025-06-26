@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert, ScrollView, StyleSheet } from "react-native";
 import { createClient } from "@supabase/supabase-js";
 import { supabase as supabaseClient } from '@/libs/supabase';
-import HeaderHome from "@/app/components/headerHome";
+//import HeaderHome from "@/app/components/headerHome";
 import { styles } from "./styles";
 
 interface PersonalDataScreenProps {
@@ -74,9 +74,9 @@ const PersonalDataScreen: React.FC<PersonalDataScreenProps> = ({ userId }) => {
     <View style={styles.container}>
       
     <ScrollView showsVerticalScrollIndicator={false} style={{flex:1, width:'100%'}}>
-      <HeaderHome/>
+         
       <View style={{padding:20}}>
-
+      <Text style={[styles.singleTitle,{fontSize:25, fontWeight:'700', marginBottom:20}]}>Preencha os dados abaixo para criar seu perfil</Text>
       <Text style={styles.singleTitle}>Nome Completo:</Text>
       <TextInput 
         value={fullName} 
